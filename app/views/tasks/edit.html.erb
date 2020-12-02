@@ -1,0 +1,6 @@
+<%= render partial: "header" %>  
+<%= form_for @task do |form| %>
+  <%= render partial: "form", locals: {form:form} %>
+  <%= form.submit "OK"%>
+<% end %>
+<%= render partial:"shared/errors", local:{obj:@task} %>

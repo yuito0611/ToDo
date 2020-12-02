@@ -1,0 +1,40 @@
+<%= render partial: "header" %>  
+<div class="row">
+  <%# サイドメニュー %>
+  <div class="col">
+  
+  </div>
+
+  <%# メインコンテナ %>
+  <div class="col text-center">
+  <ul class="list-group">
+    <li class="list-group-item" id="items">
+      <% if @categories.present? %>
+        <table class="table table-striped">
+          <tbody>
+             <tr><%# 「すべて」カテゴリー %>
+              <td><%= link_to "すべて", tasks_path %></td>  
+              <td></td>
+              <td></td>
+            </tr>
+          <% @categories.each do |category| %> <%# カテゴリーを一覧表示 %>
+            <tr>
+              <td><%= link_to category.name, tasks_path(category_id: category.id) %></td>  
+              <td><%= link_to(content_tag(:i, '' ,class: "far fa-edit"), edit_category_path(id: category.id)) %><%#タスクの削除 %></td>
+              <td><%= link_to(content_tag(:i, '' ,class: "far fa-trash-alt"), category_path(id: category.id),data:{ confirm:"本当に削除しますか？"},:method => :delete) %><%#タスクの削除 %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+       <p>カテゴリーはありません。</p>
+      <% end %>
+    </li>
+  </ul>
+    <%= link_to new_category_path do %>
+      <i class="fas fa-plus-circle"></i>
+    <% end %>
+
+  </div>
+  <div class="col"></div>
+</div>

@@ -1,0 +1,11 @@
+<%= render partial: "header" %>  
+<% @page_title = "ユーザーの新規登録" %>
+
+<h1><%=@page_title %></h1>
+
+<%= form_for @user do |form| %>
+  <%= render partial: "userform", locals: {form:form} %>
+  <%= form.submit %>
+
+
+<% end %>

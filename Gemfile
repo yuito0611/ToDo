@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'email_validator', '~> 2.0', '>= 2.0.1'
+gem 'rails-i18n', '~> 5.1.3'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -53,5 +56,11 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :development, :test do
+  gem 'awesome_print'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'font-awesome-sass', '~> 5.15.1'
+

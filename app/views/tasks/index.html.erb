@@ -1,0 +1,38 @@
+<%= render partial: "header" %>  
+<div class="row">
+  <div class="col"></div>
+  <div class="col text-center">
+    <ul class="list-group">
+      <%#カテゴリー名 %>
+      <li class="list-group-item "><%= @category.name %></li>
+      <%#タスク一覧 %>
+      <li class="list-group-item" id="items">
+        <% if @tasks.present? %>
+          <table class="table table-striped">
+            <tbody>
+            <%#タスクの表示 %>
+              <% @tasks.each do |task| %>
+              <tr>
+                <th><input type="checkbox" name="done" id="done" checked=<%=task.done %>> </th>
+                <td><%= task.name %></td>
+                <td><%= task.date %></td>
+                <td>
+
+                  <%= link_to(content_tag(:i, '' ,class: "far fa-edit"), edit_task_path(id: task.id)) %><%#タスクの編集 %>
+                  <%= link_to(content_tag(:i, '' ,class: "far fa-trash-alt"), task_path(id: task.id), :method => :delete,data:{ confirm:"本当に削除しますか？"}) %><%#タスクの削除 %>
+                    
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+        <p>タスクはありません。</p>
+        <% end %>
+      </li>
+    </ul>
+    <%= link_to(content_tag(:i, '',class: "fas fa-plus-circle"), new_task_path(category_id: @category.id)) %>
+    <%= link_to(content_tag(:i, '',class: "fas fa-undo"), categories_path) %>
+  </div>
+  <div class="col"></div>
+</div>

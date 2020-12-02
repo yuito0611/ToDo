@@ -1,0 +1,12 @@
+<%= render partial: "shared/header_login" %>  
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col" style="text-align:center">
+      <%= render partial:"shared/login_form" %>
+      <%if flash.alert %> <p class="alert text-white"><%= flash.alert %></p><% end %>
+    </div>
+    <div class="col"></div>
+  </div>    
+</div> 

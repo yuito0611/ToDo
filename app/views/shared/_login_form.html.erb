@@ -1,0 +1,13 @@
+  <div class="card text-white bg-dark d-inline-block" style="max-width: 20rem;">
+  <div class="card-header">ログイン</div>
+  <div class="card-body">
+    <%= form_tag :session, class:"login-form" do %>
+        <div class="form-group">
+          <input class="form-control placeholder-no-fix" type="text" name="name" placeholder="ユーザー名" >
+          <br>
+          <input class="form-control placeholder-no-fix" type="password" name="password" placeholder="パスワード" >
+        </div>
+          <input type="submit" value="ログイン" class ="btn btn-login ">
+      <% end %>
+  </div>
+</div>
