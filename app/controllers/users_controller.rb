@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :login_required
 
   #ユーザー一覧
   def index
@@ -22,7 +23,8 @@ class UsersController < ApplicationController
 
   #ユーザーの新規登録
   def create
-    @user = User.new(params[:user])
+    category_params = params.require(:user).permit(:name,:full_name,:email,:birthday,:sex,:administrator,:password)
+    @user = User.new(category_params)
     if @user.save
       redirect_to @user,notice:"ユーザーを登録しました。"
     else
@@ -32,8 +34,9 @@ class UsersController < ApplicationController
 
   #ユーザー情報の更新
   def update
+    category_params = params.require(:user).permit(:name,:full_name,:email,:birthday,:sex,:administrator,:password)
     @user = User.find(params[:id])
-    @user.assign_attributes(params[:user])
+    @user.assign_attributes(category_params)
     if @user.save
       redirect_to @user
     else

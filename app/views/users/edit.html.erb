@@ -1,11 +1,52 @@
-<%= render partial: "header" %>  
 <% @page_title = "ユーザーの情報編集" %>
 
 <h1><%=@page_title %></h1>
 
-<%= form_for @user do |form| %>
-  <%= render partial: "userform", locals: {form:form} %>
-  <%= form.submit %>
 
+<%= form_with model:@user, local: true do |form| %>
 
+<table class="table table-striped">
+  <tr>
+    <th><%= form.label :name,"ユーザー名" %></th>
+    <td><%= form.text_field :name %><td>
+  </tr>
+  <tr>
+    <th><%= form.label :full_name,"本名" %></th>
+    <td><%= form.text_field :full_name %><td>
+  </tr>
+  <tr>
+    <th>性別</th>
+    <td>
+      <%= form.radio_button :sex,1 %>
+      <%= form.label :sex_1,"男" %>
+      <%= form.radio_button :sex,2 %>
+      <%= form.label :sex_2,"女" %>
+    </td>
+  </tr>
+  <tr>  
+    <th><%= form.label :birthday,"誕生日" %></th>
+    <td>
+      <%= form.date_select :birthday,
+          start_year:1940,end_year: Time.current.year,
+          use_month_numbers: true %>
+    </td>
+  </tr>
+  <tr>
+    <th><%= form.label :email,"メールアドレス" %></th>
+    <td><%= form.text_field :email %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :password_digest,"パスワード" %></th>
+    <td><%= form.password_field :password_digest %><td>
+  </tr>
+  <tr>
+    <th>管理者</th>
+    <td>
+      <%= form.check_box :administrator %>
+      <%= form.label :administrator, "管理者" %>
+    </td>
+  </tr>
+</table>
+  <%= form.submit "更新", class:"btn btn-primary" %>
 <% end %>
+<%= render partial: "shared/errors", locals: {obj: @user} %>  

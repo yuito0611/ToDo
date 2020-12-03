@@ -1,7 +1,5 @@
-<%= render partial: "header" %>  
 <div class="row">
-  <div class="col"></div>
-  <div class="col text-center">
+  <div class="col-8 text-center" style="background-color:#465568;">
     <ul class="list-group">
       <%#カテゴリー名 %>
       <li class="list-group-item "><%= @category.name %></li>
@@ -31,8 +29,11 @@
         <% end %>
       </li>
     </ul>
-    <%= link_to(content_tag(:i, '',class: "fas fa-plus-circle"), new_task_path(category_id: @category.id)) %>
-    <%= link_to(content_tag(:i, '',class: "fas fa-undo"), categories_path) %>
+    <%= link_to "戻る", categories_path, class:"btn btn-secondary" %>
+    <%= link_to "タスクを追加", new_task_path(category_id: @category.id), class:"btn btn-primary"%>
   </div>
-  <div class="col"></div>
+  <div class="col-4" style="padding:0px;">
+    <%= render "shared/sidebar" %>
+  </div>
 </div>
+

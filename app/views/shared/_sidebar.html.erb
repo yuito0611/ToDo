@@ -1,0 +1,13 @@
+<div class="listings bg-dark" >
+  <div class="listings_channels ">
+    <h2 class="listings_header"><%= @username %></h2>
+    <ul class="channel_list">
+      <% if current_user %>
+        <%= sidebar_link_item('ユーザー一覧', :users) %>
+      <% end %>
+        <%#= sidebar_link_item('ユーザー情報編集', :route) %>
+        <%#= link_to "編集",[:edit, @user], {class: "btn btn-success"} %>
+        <%= sidebar_link_item('ログアウト', :root) %>
+      </ul>
+  </div>
+</div>

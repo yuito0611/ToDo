@@ -1,8 +1,13 @@
-<%= render partial: "header" %>  
-<%= form_with model: @category, local: true do |f| %>
+<div class="row">
+<div class="col-8" style="background-color:#465568;">
+  <%= form_with model: @category, local: true do |f| %>
   <div class=" form-group " >
-  <label>カテゴリ名</label>
+  <label class="text-light">カテゴリ名</label>
   <%= f.text_field :name, class:"form-control" %>
   </div>
   <%= f.submit "更新", class:"btn btn-primary" %>
-<% end %>
+  <% end %>
+</div>
+<div class="col-4 bg-dark" style="padding:0px;">
+  <%= render partial:'shared/sidebar', locals:{username: session[:user_id]}%>
+</div>

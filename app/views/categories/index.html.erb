@@ -1,18 +1,12 @@
-<%= render partial: "header" %>  
 <div class="row">
-  <%# サイドメニュー %>
-  <div class="col">
-  
-  </div>
-
+<div class="col-8" style="background-color:#465568;">
   <%# メインコンテナ %>
-  <div class="col text-center">
   <ul class="list-group">
     <li class="list-group-item" id="items">
       <% if @categories.present? %>
         <table class="table table-striped">
           <tbody>
-             <tr><%# 「すべて」カテゴリー %>
+            <tr><%# 「すべて」カテゴリー %>
               <td><%= link_to "すべて", tasks_path %></td>  
               <td></td>
               <td></td>
@@ -27,14 +21,13 @@
           </tbody>
         </table>
       <% else %>
-       <p>カテゴリーはありません。</p>
+      <p>カテゴリーはありません。</p>
       <% end %>
     </li>
   </ul>
-    <%= link_to new_category_path do %>
-      <i class="fas fa-plus-circle"></i>
-    <% end %>
+  <%= link_to "カテゴリーを追加", new_category_path, class:"btn btn-primary"%>
 
-  </div>
-  <div class="col"></div>
+</div>
+<div class="col-4 bg-dark" style="padding:0px;">
+    <%= render partial:'shared/sidebar' ,locals:{username:@username}%>
 </div>

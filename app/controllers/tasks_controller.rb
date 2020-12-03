@@ -16,6 +16,7 @@ class TasksController < ApplicationController
 
   #タスク一覧
   def index
+    @username = session[:user]["name"]
     if params[:category_id] == nil
       @tasks = Task.all
       @category = Category.new(id:0, name:"すべて")
@@ -27,16 +28,19 @@ class TasksController < ApplicationController
   end
 
   def show
+    @username = session[:user]["name"]
     @task = Task.find(params[:id])
   end
 
   def new
+    @username = session[:user]["name"]
     @task = Task.new
   end
 
 
 
   def create
+    @username = session[:user]["name"]
     task_params = params.require(:task).permit(:name,:priority,:date).merge(category_id: params[:category_id],done: false)
     @task = Task.new(task_params)
     if @task.save
@@ -47,10 +51,12 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @username = session[:user]["name"]
     @task = Task.find(params[:id])
   end
 
   def update
+    @username = session[:user]["name"]
     @task = Task.find(params[:id])
     @task.assign_attributes(params[:task])
     if @task.save
@@ -61,6 +67,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @username = session[:user]["name"]
     @task = Task.find(params[:id])
     @category_id = @task.category_id
     @task.destroy

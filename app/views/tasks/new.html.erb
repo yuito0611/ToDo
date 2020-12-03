@@ -1,32 +1,35 @@
-<%= render partial: "header" %>  
-<%= form_with model: @task, url: tasks_path(category_id: params[:category_id]), local:true do |form| %>
-  
-  <table>
-  <tr>
-    <th><%= form.label :name,"タスク名"%></th>
-    <td><%= form.text_field :name %></td>
-  </tr>
-  <tr>
-    <th><%= form.label :date,"日付"%></th>
-    <td><%= form.date_select :date, start_year:Time.current.year, use_month_numbers:true %></td>
-  </tr>
-  <tr>
-    <th><%= form.label :priority,"優先度"%></th>
-    <td>
-      <%= form.select :priority,[["1",1],["2",2],["3",3]],{},{class:"form-control"} %>
-    </td>
-  </tr>
+<div class="row">
+<div class="col-8" style="background-color:#465568;">
+  <%= form_with model: @task, url: tasks_path(category_id: params[:category_id]), local:true do |form| %>
+    
+    <table>
     <tr>
-    <th><%= form.label :category_id,"優先度"%></th>
-    <td>
-      <%= form.select :category_id,@categories_list,{},{class:"form-control"} %>
-    </td>
-  </tr>
-</table>
-  <%= link_to "戻る", categories_path, class:"btn btn-secondary" %>
-  <%  %>
-  <%= form.submit "追加", class:"btn btn-primary"%>
-<% end %>
+      <th><%= form.label :name,"タスク名", class:"text-white"%></th>
+      <td><%= form.text_field :name , class:"form-control"%></td>
+    </tr>
+    <tr>
+      <th><%= form.label :date,"日付" , class:"text-white"%></th>
+      <td><%= form.date_select :date, start_year:Time.current.year, use_month_numbers:true , class:"form-control"%></td>
+    </tr>
+    <tr>
+      <th><%= form.label :priority,"優先度", class:"text-white"%></th>
+      <td>
+        <%= form.select :priority,[["1",1],["2",2],["3",3]],{},{class:"form-control"} %>
+      </td>
+    </tr>
+      <tr>
+      <th><%= form.label :category_id,"カテゴリー", class:"text-white"%></th>
+      <td>
+        <%= form.select :category_id,@categories_list,{},{class:"form-control"} %>
+      </td>
+    </tr>
+  </table>
+    <%= link_to "戻る", categories_path, class:"btn btn-secondary" %>
+    <%  %>
+    <%= form.submit "追加", class:"btn btn-primary"%>
+  <% end %>
 <%= render partial:"shared/errors", locals:{obj:@task} %>
-  
-
+</div>
+<div class="col-4 bg-dark" style="padding:0px;">
+  <%= render'shared/sidebar' %>
+</div>

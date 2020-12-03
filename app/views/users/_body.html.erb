@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <tr>
+    <th>ユーザー名</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>本名</th>
+    <td><%= @user.full_name %></td>
+  </tr>  
+  <tr>
+    <th>性別</th>
+    <td><%= @user.sex==1 ? "男":"女" %></td>
+  </tr>  
+  <tr>
+    <th>誕生日</th>
+    <td><%= @user.birthday&.strftime("%Y年%m月%d日")%></td>
+  </tr>  
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @user.email %></td>
+  </tr>  
+  <tr>
+    <th>管理者権限</th>
+    <td><%= @user.administrator? ? "〇":"-" %></td>
+  </tr>
+  <tr>
+    <th>パスワード</th>
+    <td><%= @user.password_digest %></td>
+  </tr>
+</table>
