@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_categories_list, only: [:new, :create, :edit, :update]
+  before_action :login_required
 
   private def set_categories_list
     @categories_list = []
@@ -74,5 +75,13 @@ class TasksController < ApplicationController
     redirect_to tasks_path(category_id: @category_id), notice:"タスクを削除しました。"
   end
 
-
+  def checkboxchanged(task_id,is_done)
+    @task = Task.find(task_id)
+    @task.done = is_done
+    if @task.save
+      redirect_to tasks_path(category_id: @task.category_id)
+    else
+      logger.error("タスクのチェックボックスの更新に失敗しました。")
+    end
+  end
 end

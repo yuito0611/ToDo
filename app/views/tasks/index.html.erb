@@ -3,6 +3,7 @@
     <ul class="list-group">
       <%#カテゴリー名 %>
       <li class="list-group-item "><%= @category.name %></li>
+
       <%#タスク一覧 %>
       <li class="list-group-item" id="items">
         <% if @tasks.present? %>
@@ -11,7 +12,7 @@
             <%#タスクの表示 %>
               <% @tasks.each do |task| %>
               <tr>
-                <th><input type="checkbox" name="done" id="done" checked=<%=task.done %>> </th>
+                <th><input type="checkbox" name="done" class="done" checked=<%=task.done %>> </th>
                 <td><%= task.name %></td>
                 <td><%= task.date %></td>
                 <td>

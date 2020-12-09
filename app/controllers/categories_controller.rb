@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :login_required
+
   def index
     @categories = Category.all
     @username = session[:user]["name"]
