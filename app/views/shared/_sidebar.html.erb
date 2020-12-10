@@ -2,9 +2,10 @@
   <div class="listings_channels ">
     <h2 class="listings_header"><%= session[:user]["name"] %></h2>
     <ul class="channel_list">
-      <% if current_user %>
+      <% if current_user.administrator %>
         <%= sidebar_link_item('ユーザー一覧', :users) %>
       <% end %>
+        <%= sidebar_link_item('カテゴリー一覧', :categories) %>
         <%= sidebar_link_item('ログアウト', :root) %>
       </ul>
   </div>

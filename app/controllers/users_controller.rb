@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     category_params = params.require(:user).permit(:name,:full_name,:email,:birthday,:sex,:administrator,:password)
     @user = User.new(category_params)
     if @user.save
-      redirect_to @user,notice:"ユーザーを登録しました。"
+      redirect_to :root ,notice:"ユーザーを登録しました。"
     else
       render "new"
     end
