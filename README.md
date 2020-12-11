@@ -25,6 +25,6 @@ Things you may want to cover:
 
 * URL: https://railsapptodo.herokuapp.com/
 
-*管理者権限を持っているアカウント
-** ユーザー名：admin
-** パスワード：password
+* 管理者権限を持っているアカウント
+* * ユーザー名：admin
+* * パスワード：password
